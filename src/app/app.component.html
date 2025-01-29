@@ -4,8 +4,8 @@
   <div *ngIf="isDropdownOpen" [ngClass]="{'is-open': isDropdownOpen}" class="dropdown-content">
     <table>
       <thead>
-        <th>a</th>
-        <th>a</th>
+        <th>header 1</th>
+        <th>header 2</th>
       </thead>
       <tbody>
         <tr [ngClass]="{'selected-row': selectedOption === option}" *ngFor="let option of options"
