@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'select-table';
   isDropdownOpen = false;
   selectedOption: string = ''
@@ -28,9 +28,18 @@ export class AppComponent implements AfterViewInit {
     // body.onclick(this.toggleDropdown)
   }
 
+  clearSelection(event: MouseEvent) {
+    event.stopPropagation();
+    this.selectedOption = '';
+  }
+
   selectOption(option: string) {
     console.log('Selected option:', option);
     this.selectedOption = option
     this.isDropdownOpen = false;
+  }
+
+  ngOnDestroy() {
+    this.renderer.destroy();
   }
 }

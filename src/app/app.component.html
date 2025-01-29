@@ -1,5 +1,6 @@
 <div class="dropdown">
   <input type="text" (click)="toggleDropdown()" [value]="selectedOption" readonly placeholder="Select an option" />
+  <span *ngIf="selectedOption" (click)="clearSelection($event)" class="remove-icon">&times;</span>
   <div *ngIf="isDropdownOpen" [ngClass]="{'is-open': isDropdownOpen}" class="dropdown-content">
     <table>
       <thead>
